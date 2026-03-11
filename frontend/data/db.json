@@ -1,0 +1,53 @@
+{
+  "jobs": [
+    {
+      "id": "1",
+      "company": "Google",
+      "position": "Frontend Developer",
+      "status": "Interviewing",
+      "date": "2023-10-01"
+    },
+    {
+      "id": "ec93",
+      "company": "Amazon",
+      "position": "FullStack ",
+      "status": "Interviewing",
+      "date": "2025-12-23"
+    },
+    {
+      "id": "debf",
+      "company": "Adobe",
+      "position": "Data Analyst",
+      "status": "Pending",
+      "date": "2025-12-24"
+    },
+    {
+      "id": "fa1f",
+      "company": "Cisco",
+      "position": "Network Analyst",
+      "status": "Declined",
+      "date": "2025-12-24"
+    },
+    {
+      "id": "3190",
+      "company": "Cognizant",
+      "position": "Frontend Engineer",
+      "status": "Pending",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "0e7d",
+      "company": "Facebook",
+      "position": "Network Engineer",
+      "status": "Interviewing",
+      "date": "2025-12-25"
+    },
+    {
+      "id": "df62",
+      "company": "Microsoft",
+      "position": "Fullstack Web Developer",
+      "status": "Declined",
+      "date": "2025-12-25"
+    }
+  ]
+}
