@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const authMiddleware = require("../middleware/authMiddleware");
+
 const {
   getJobs,
   createJob,
@@ -8,14 +10,9 @@ const {
   deleteJob
 } = require("../controllers/jobController");
 
-router
-  .route("/jobs")
-  .get(getJobs)
-  .post(createJob);
-
-router
-  .route("/jobs/:id")
-  .put(updateJob)
-  .delete(deleteJob);
+router.get("/jobs", authMiddleware, getJobs);
+router.post("/jobs", authMiddleware, createJob);
+router.put("/jobs/:id", authMiddleware, updateJob);
+router.delete("/jobs/:id", authMiddleware, deleteJob);
 
 module.exports = router;

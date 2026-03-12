@@ -1,9 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
+import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Stats from './pages/Stats';
@@ -18,19 +21,28 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const data = await getJobs();
-        setJobs(data);
-      } catch (err) {
-        setError("Could not fetch jobs from server");
-      } finally {
-        setIsLoading(false);
-      }
-    };
+useEffect(() => {
 
-    fetchJobs();
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    setIsLoading(false);
+    return;
+  }
+
+  const fetchJobs = async () => {
+    try {
+      const data = await getJobs();
+      setJobs(data);
+    } catch (err) {
+      setError("Could not fetch jobs from server");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  fetchJobs();
+
   }, []);
 
   if (isLoading) {
@@ -52,26 +64,45 @@ function App() {
       <main className="container">
         <Routes>
 
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+
           <Route path="/" element={<Home />} />
 
           <Route
             path="/dashboard"
-            element={<Dashboard jobs={jobs} />}
+            element={
+              <ProtectedRoute>
+                <Dashboard jobs={jobs} />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/stats"
-            element={<Stats jobs={jobs} />}
-          />
-
-          <Route
-            path="/job/:id"
-            element={<JobDetails jobs={jobs} setJobs={setJobs} />}
+            element={
+              <ProtectedRoute>
+                <Stats jobs={jobs} />
+              </ProtectedRoute>
+            }
           />
 
           <Route
             path="/add"
-            element={<AddJob setJobs={setJobs} />}
+            element={
+              <ProtectedRoute>
+                <AddJob setJobs={setJobs} />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/job/:id"
+            element={
+              <ProtectedRoute>
+                <JobDetails jobs={jobs} setJobs={setJobs} />
+              </ProtectedRoute>
+            }
           />
 
         </Routes>

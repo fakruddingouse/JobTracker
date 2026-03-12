@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const authRoutes = require("./routes/authRoutes");
 const jobRoutes = require("./routes/jobRoutes");
 
 const app = express();
@@ -10,11 +11,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+if (!process.env.MONGO_URI) {
+    console.log("MONGO_URI not found");
+    process.exit(1);
+}
 
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch((error) => console.log("MongoDB connection error: ", error));
+
+app.use("/api", authRoutes);
 app.use("/api", jobRoutes);
 
 app.get("/", (req, res) => {

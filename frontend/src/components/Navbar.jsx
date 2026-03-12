@@ -1,21 +1,43 @@
-import { NavLink } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
+
     <nav className="navbar">
-      <div className="nav-container">
-        <NavLink to="/" className="nav-logo">
-          Pro-Connect<span>.</span>
-        </NavLink>
-        
-        <div className="nav-links">
-          <NavLink to="/" end>Home</NavLink>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/stats">Stats</NavLink>
-          <NavLink to="/add" className="nav-add-btn">+ Add Job</NavLink>
-        </div>
+
+      <h2 className="logo">ProConnect</h2>
+
+      <div className="nav-links">
+
+        <Link to="/">Home</Link>
+
+        {token && <Link to="/dashboard">Dashboard</Link>}
+        {token && <Link to="/stats">Stats</Link>}
+        {token && <Link to="/add">Add Job</Link>}
+
+        {!token && <Link to="/login">Login</Link>}
+        {!token && <Link to="/signup">Create Account</Link>}
+
+        {token && (
+          <button onClick={handleLogout} className="btn-secondary">
+            Logout
+          </button>
+        )}
+
       </div>
+
     </nav>
+
   );
 };
 
