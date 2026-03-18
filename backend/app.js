@@ -11,7 +11,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:5173",                        // local dev
-    "https://jobtracker-frontend.onrender.com"      // production
+    "https://jobtracker-frontend-8gd5.onrender.com"      // production
   ],
   credentials: true
 }));
