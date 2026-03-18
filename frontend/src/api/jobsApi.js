@@ -14,6 +14,16 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+export const signupUser = async (formData) => {
+  const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, formData);
+  return res.data;
+};
+
+export const loginUser = async (formData) => {
+  const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, formData);
+  return res.data;
+};
+
 // Get all jobs
 export const getJobs = async () => {
   const res = await API.get("/jobs");
