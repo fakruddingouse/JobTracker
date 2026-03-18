@@ -19,13 +19,13 @@ const Footer = () => {
         <div className="footer-social">
           <h4>Social</h4>
           <div className="social-icons">
-            <a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="www.linkedin.com/baba-fakruddin-2a06b0331" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">Twitter</a>
+            <a href="https://github.com/fakruddingouse" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="http://linkedin.com/in/baba-fakruddin-488092301/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://twitter.com/babafakruddin_1" target="_blank" rel="noreferrer">Twitter</a>
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
+      <div className="footer-bottom"> 
         <p>&copy; {new Date().getFullYear()} Pro-Connect. Built by Baba Fakruddin.</p>
       </div>
     </footer>
