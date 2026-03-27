@@ -107,7 +107,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
+  margin: 1.5rem 0;
 }
 
 .nav-container {
@@ -135,6 +136,7 @@ body {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
@@ -308,6 +310,7 @@ body {
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
+
   .nav-container {
     flex-direction: column;
     gap: 1rem;
@@ -338,6 +341,12 @@ body {
 
 .animate-pop {
   animation: pop 0.4s ease-out forwards;
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spinner {
@@ -495,4 +504,13 @@ body {
   .footer-about p {
     margin: 0 auto;
   }
+}
+
+.user-greeting {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
 }

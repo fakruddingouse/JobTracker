@@ -45,3 +45,7 @@ export const deleteJob = async (id) => {
   return res.data;
 };
 
+export const deleteAccount = async () => {
+  const res = await API.delete("/auth/delete-account")
+  return res.data;
+};
